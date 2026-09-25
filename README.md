@@ -5,9 +5,13 @@ A tiny command-line notes tool, used as the practice repo for Unit 4 (Git). The 
 ### The app
 - `node notes.js add <text>` — add a note
 - `node notes.js list` — list all notes
-- `node notes.js delete <id>` — delete a note
+- `node notes.js delete <id>` — delete a note (requires a whole-number id; prints a usage message if missing or invalid)
 
-Layout: `notes.js` is the entry point, `lib/store.js` loads and saves notes (in `notes.json`), and `lib/config.js` holds app settings.
+Layout: `notes.js` is the entry point, `lib/store.js` loads and saves notes (in `notes.json`, created automatically on first use), and `lib/config.js` holds app settings.
+
+`lib/store.js` validates `notes.json` on load: if the file is missing it starts from an empty note list, and if the file contains malformed JSON or an unexpected shape it warns on stderr and resets safely rather than crashing or silently losing data. Saves are written atomically (via a temp file + rename) to avoid leaving `notes.json` corrupted if the process is interrupted mid-write.
+
+See [`CHANGE.md`](./CHANGE.md) for a log of changes to this repo.
 
 ### Set up
 1. Make sure you have your own copy of this repo (created from the lesson on the platform).
