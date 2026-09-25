@@ -28,7 +28,15 @@ function main() {
       break;
     }
     case "delete": {
+      if (rest.length === 0) {
+        console.log("Usage: notes delete <id>");
+        return;
+      }
       const id = Number(rest[0]);
+      if (!Number.isInteger(id)) {
+        console.log(`Usage: notes delete <id> (got "${rest[0]}", expected a whole number)`);
+        return;
+      }
       const ok = store.remove(id);
       console.log(ok ? `Deleted note #${id}` : `No note #${id} found`);
       break;
