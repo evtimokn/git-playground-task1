@@ -11,7 +11,7 @@ Layout: `notes.js` is the entry point, `lib/store.js` loads and saves notes (in 
 
 `lib/store.js` validates `notes.json` on load: if the file is missing it starts from an empty note list, and if the file contains malformed JSON or an unexpected shape it warns on stderr and resets safely rather than crashing or silently losing data. Saves are written atomically (via a temp file + rename) to avoid leaving `notes.json` corrupted if the process is interrupted mid-write.
 
-See [`CHANGE.md`](./CHANGE.md) for a log of changes to this repo.
+See [`CHANGELOG.md`](./CHANGELOG.md) for a log of changes to this repo.
 
 ### Set up
 1. Make sure you have your own copy of this repo (created from the lesson on the platform).
