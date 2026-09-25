@@ -5,5 +5,5 @@
   "bin": { "notes": "notes.js" },
   "main": "notes.js",
   "scripts": { "start": "node notes.js" },
-  "license": "Apache"
+  "license": "MIT"
 }
